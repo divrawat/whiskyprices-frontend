@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic';
 import { withRouter } from 'next/router';
 import { getCookie, isAuth, signout } from '../../actions/auth';
 import { getCategories } from '../../actions/category';
-import { getTags } from '../../actions/tag';
 import { singleBlog, updateBlog } from '../../actions/blog';
 const SunEditor = dynamic(() => import("suneditor-react"), { ssr: false });
 import 'suneditor/dist/css/suneditor.min.css';
@@ -23,9 +22,7 @@ function sighnoutuser() { signout(() => Router.replace(`/signin`)) }
 const BlogUpdate = ({ router }) => {
 
     const [categories, setCategories] = useState([]);
-    const [tags, setTags] = useState([]);
     const [checked, setChecked] = useState([]); // categories
-    const [checkedTag, setCheckedTag] = useState([]); // tags
     const [body, setBody] = useState('');
 
     const [values, setValues] = useState({
@@ -48,7 +45,6 @@ const BlogUpdate = ({ router }) => {
         setValues({ ...values, formData: new FormData() });
         initBlog();
         initCategories();
-        initTags();
     }, [router]);
 
 
@@ -108,7 +104,6 @@ const BlogUpdate = ({ router }) => {
                     setValues({ ...values, title: data.title, mtitle: data.mtitle, photo:data.photo, date: dateObject, slug: data.slug, mdesc: data.mdesc });
                     setBody(data.body)
                     setCategoriesArray(data.categories);
-                    setTagsArray(data.tags);
                 }
             });
         }
@@ -133,16 +128,6 @@ const BlogUpdate = ({ router }) => {
         });
     };
 
-    const initTags = () => {
-        getTags().then(data => {
-            if (data.error) {
-                setValues({ ...values, error: data.error });
-            } else {
-                setTags(data);
-            }
-        });
-    };
-
 
     const setCategoriesArray = blogCategories => {
         let ca = [];
@@ -150,14 +135,6 @@ const BlogUpdate = ({ router }) => {
             ca.push(c._id);
         });
         setChecked(ca);
-    };
-
-    const setTagsArray = blogTags => {
-        let ta = [];
-        blogTags.map((t, i) => {
-            ta.push(t._id);
-        });
-        setCheckedTag(ta);
     };
 
 
@@ -185,31 +162,7 @@ const BlogUpdate = ({ router }) => {
         formData.set('categories', all);
     };
 
-    const handleTagsToggle = t => () => {
-        setValues({ ...values, error: '' });
 
-        const clickedTag = checkedTag.indexOf(t);
-        const all = [...checkedTag];
-
-        if (clickedTag === -1) {
-            all.push(t);
-        }
-        else {
-            all.splice(clickedTag, 1);
-        }
-        setCheckedTag(all);
-        formData.set('tags', all);
-    };
-
-
-    const findOutTag = t => {
-        const result = checkedTag.indexOf(t);
-        if (result !== -1) {
-            return true;
-        } else {
-            return false;
-        }
-    };
 
     const showCategories = () => {
         return (
@@ -221,18 +174,6 @@ const BlogUpdate = ({ router }) => {
                     <label >&nbsp;&nbsp; {c.name}</label>
                 </li>
 
-            ))
-        );
-    };
-
-    const showTags = () => {
-        return (
-            tags &&
-            tags.map((t, i) => (
-                <li key={i} className={styles0.listitem}>
-                    &nbsp;&nbsp;&nbsp;&nbsp;  <input onChange={handleTagsToggle(t._id)} checked={findOutTag(t._id)} type="checkbox" />
-                    <label>&nbsp;&nbsp;{t.name}</label>
-                </li>
             ))
         );
     };
@@ -365,9 +306,7 @@ const BlogUpdate = ({ router }) => {
 
                             <ul> {showCategories()}</ul>
                             <br /><br />
-                            <div className={styles0.heading}>Tags</div>
-                            <div style={{ marginTop: "10px" }}></div>
-                            <ul> {showTags()}</ul>
+                           
 
                         </div>
                     </div>

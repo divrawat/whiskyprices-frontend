@@ -3,7 +3,6 @@ import Router from 'next/router';
 import dynamic from 'next/dynamic';
 import { getCookie, signout, isAuth } from '../../actions/auth';
 import { getCategories } from '../../actions/category';
-import { getTags } from '../../actions/tag';
 import { createBlog } from '../../actions/blog';
 import styles0 from "../../styles/editor.module.css"
 import Image from 'next/image';
@@ -31,9 +30,7 @@ const CreateBlog = ({ router }) => {
     };
     const [body, setBody] = useState(blogFromLS());
     const [checked, setChecked] = useState([]); // categories
-    const [checkedTag, setCheckedTag] = useState([]); // tags
     const [categories, setCategories] = useState([]);
-    const [tags, setTags] = useState([]);
     // const [selectedDate, setSelectedDate] = useState(null);
 
 
@@ -82,7 +79,6 @@ const CreateBlog = ({ router }) => {
 
                 setBody('');
                 setCategories([]);
-                setTags([]);
             }
         });
     };
@@ -98,7 +94,6 @@ const CreateBlog = ({ router }) => {
     useEffect(() => {
         setValues({ ...values, formData: new FormData() });
         initCategories();
-        initTags();
 
     }, [router]);
 
@@ -115,15 +110,6 @@ const CreateBlog = ({ router }) => {
         });
     };
 
-    const initTags = () => {
-        getTags().then(data => {
-            if (data.error) {
-                setValues({ ...values, error: data.error });
-            } else {
-                setTags(data);
-            }
-        });
-    };
 
 
 
@@ -145,26 +131,6 @@ const CreateBlog = ({ router }) => {
         setChecked(all);
         formData.set('categories', all);
     };
-
-
-
-
-    const handleTagsToggle = t => () => {
-        setValues({ ...values, error: '' });
-        // return the first index or -1
-        const clickedTag = checkedTag.indexOf(t);
-        const all = [...checkedTag];
-
-        if (clickedTag === -1) {
-            all.push(t);
-        } else {
-            all.splice(clickedTag, 1);
-        }
-        console.log(all);
-        setCheckedTag(all);
-        formData.set('tags', all);
-    };
-
 
 
 
@@ -193,19 +159,6 @@ const CreateBlog = ({ router }) => {
                     <label >&nbsp;&nbsp;{c.name}</label>
                 </li>
             ))
-        );
-    };
-
-    const showTags = () => {
-        return (
-            tags &&
-            tags.map((t, i) => (
-                <li key={i} className={styles0.listitem} >
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <input onChange={handleTagsToggle(t._id)} type="checkbox" style={{ cursor: "pointer" }} />
-                    <label>&nbsp;&nbsp;{t.name}</label>
-                </li>
-            ))
-
         );
     };
 
@@ -319,9 +272,7 @@ const CreateBlog = ({ router }) => {
                             <div style={{ marginTop: "10px" }}></div>
                             {showCategories()}
                             <div style={{ marginTop: "30px" }}></div>
-                            <div className={styles0.heading}>Tags</div>
-                            <div style={{ marginTop: "10px" }}></div>
-                            {showTags()}
+                           
                         </div>
 
                     </div>
