@@ -4,10 +4,8 @@ import { isAuth } from '../actions/auth';
 import parse from 'html-react-parser';
 import Link from 'next/link';
 const Layout = dynamic(() => import('@/components/Layout'), { ssr: false });
-import { useState, useEffect } from 'react';
-import { singleBlog, listRelated, getAllBlogSlugs } from '../actions/blog';
+import { singleBlog, getAllBlogSlugs } from '../actions/blog';
 import { API, DOMAIN, APP_NAME } from "../config";
-const SmallCard = dynamic(() => import('../components/blog/SmallCard'), { ssr: false });
 import styles from "../styles/blogposts.module.css";
 import { format } from 'date-fns';
 
@@ -41,12 +39,8 @@ const SingleBlog0 = ({ blog, errorCode }) => {
         </Head>
     );
 
-    const [related, setRelated] = useState([]);
 
-    const loadRelated = () => {listRelated({ blog }).then(data => {if (data && data.error) {console.log(data.error);} else {setRelated(data);}});};
-    useEffect(() => {loadRelated();}, []);
     const showBlogCategories = blog =>blog.categories.map((c, i) => (<Link key={i} href={`/categories/${c.slug}`} className={styles.blogcat}>{c.name}</Link>));
-    const showRelatedBlog = () => { return (related && related.map((blog, i) => (<article key={i} className={styles.box}><SmallCard blog={blog} /></article>))) };
     const date = new Date(blog.date);
     const formattedDate = format(date, 'dd MMM, yyyy');
 
@@ -93,11 +87,6 @@ const SingleBlog0 = ({ blog, errorCode }) => {
                         </section>
                         <br />
                         <br />
-                        <section className={styles.mypost2} >
-                            <br /> <br />
-                            <section className={styles.grid}>{showRelatedBlog()}</section>
-                            <br /> <br /><br /><br />
-                        </section>
                     </article>
                 </main>
             </Layout>
