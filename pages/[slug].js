@@ -24,12 +24,9 @@ const SingleBlog0 = ({ blog, errorCode }) => {
         );
     }
 
-
-
     const head = () => (
         <Head>
             <title >{`${blog.title} - ${APP_NAME}`}</title>
-
             <meta name="description" content={blog.mdesc} />
             <link rel="canonical" href={`${DOMAIN}/${blog.slug}`} />
             <meta property="og:title" content={`${blog.mtitle}| ${APP_NAME}`} />
@@ -38,54 +35,18 @@ const SingleBlog0 = ({ blog, errorCode }) => {
             <meta name="robots" content="index, follow" />
             <meta property="og:url" content={`${DOMAIN}/${blog.slug}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
-
             <meta property="og:image" content={`${API}/blog/photo/${blog.slug}`} />
             <meta property="og:image:secure_url" ccontent={`${API}/blog/photo/${blog.slug}`} />
             <meta property="og:image:type" content="image/jpg" />
-
         </Head>
     );
 
     const [related, setRelated] = useState([]);
 
-    const loadRelated = () => {
-        listRelated({ blog }).then(data => {
-            if (data && data.error) {
-                console.log(data.error);
-            } else {
-                setRelated(data);
-            }
-        });
-    };
-
-
-    useEffect(() => {
-        loadRelated();
-    }, []);
-
-
-
-    const showBlogCategories = blog =>
-        blog.categories.map((c, i) => (
-            <Link key={i} href={`/categories/${c.slug}`} className={styles.blogcat}>
-                {c.name}
-            </Link>
-        ));
-
-
-
-    const showRelatedBlog = () => {
-        return (related && related.map((blog, i) => (
-
-            <article key={i} className={styles.box}>
-                <SmallCard blog={blog} />
-            </article>
-
-        )))
-    };
-
-
-    // Date Conversion
+    const loadRelated = () => {listRelated({ blog }).then(data => {if (data && data.error) {console.log(data.error);} else {setRelated(data);}});};
+    useEffect(() => {loadRelated();}, []);
+    const showBlogCategories = blog =>blog.categories.map((c, i) => (<Link key={i} href={`/categories/${c.slug}`} className={styles.blogcat}>{c.name}</Link>));
+    const showRelatedBlog = () => { return (related && related.map((blog, i) => (<article key={i} className={styles.box}><SmallCard blog={blog} /></article>))) };
     const date = new Date(blog.date);
     const formattedDate = format(date, 'dd MMM, yyyy');
 
@@ -95,114 +56,70 @@ const SingleBlog0 = ({ blog, errorCode }) => {
 
             {head()}
             <Layout >
-
                 <main>
                     <article className={styles.backgroundImg}>
                         <br />
-
-
                         <section className={styles.mypost}>
                             <section className={styles.topsection}>
-
                                 {isAuth() && isAuth().role === 1 && (<div className={styles.editbutton}><a href={`${DOMAIN}/admin/${blog.slug}`}>Edit</a></div>)}
 
 
                                 <header>
                                     <h1 >{blog.title}</h1>
-
-
                                     <section className={styles.dateauth}>
                                         {formattedDate} &nbsp; by &nbsp;
                                         {blog.postedBy && blog.postedBy.name && blog.postedBy.username ? (
                                             <Link href={`/profile/${blog.postedBy.username}`} className={styles.author}>
                                                 {blog.postedBy.name}
                                             </Link>
-                                        ) : (
-                                            <span>User</span>
-                                        )}
-
+                                        ) : (<span>User</span>)}
                                     </section>
                                 </header>
-
-                                <br />
-
-                                
+                                <br />                               
                                     <section className={styles.imageContainer}>
                                         <div className={styles.aspectRatioContainer}>
                                             <img className={styles.resizeimg} src={blog.photo} alt={blog.title} />
                                         </div>
-                                    </section>
-                                
-
+                                    </section>                        
                                 <br /><br />
                             </section>
-
-
-
                             <section class="postcontent">
-
                                 {parse(blog.body)}
-
                                 <div style={{ textAlign: "center" }}>
                                     <br /><br />
                                     {showBlogCategories(blog)}
-
                                 </div>
                             </section>
                         </section>
                         <br />
                         <br />
-
-
                         <section className={styles.mypost2} >
                             <br /> <br />
-
                             <section className={styles.grid}>{showRelatedBlog()}</section>
                             <br /> <br /><br /><br />
                         </section>
-
                     </article>
                 </main>
-
             </Layout>
         </>
     );
 
 };
 
-
-
 export async function getStaticPaths() {
-    // const slugs = await getAllBlogSlugs();
-
-    // const paths = slugs.map((slugObject) => ({ params: { slug: slugObject.slug } }));
-    // return { paths, fallback: "blocking" };
-
-
-    const slugs = await getAllBlogSlugs();
-
-
+  const slugs = await getAllBlogSlugs();
   const excludedSlugs = ['/admin/edit-blogs', '/admin/blog', '/admin/edit-story', '/admin/web-story'];
   const filteredSlugs = slugs.filter((slugObject) => !excludedSlugs.includes(slugObject.slug));
   const paths = filteredSlugs.map((slugObject) => ({ params: { slug: slugObject.slug } }));
-
   return { paths, fallback: "blocking" };
 }
-
-
 
 
 export async function getStaticProps({ params, res }) {
     try {
         const data = await singleBlog(params.slug);
-        if (data.error) {
-            return { props: { errorCode: 404 } };
-        }
-        return { props: { blog: data } };
-    } catch (error) {
-        console.error(error);
-        return { props: { errorCode: 500 } };
-    }
+        if (data.error) {return { props: { errorCode: 404 } }; }return { props: { blog: data } };  
+    } catch (error) {console.error(error);return { props: { errorCode: 500 } };}   
 }
 
 
