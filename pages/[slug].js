@@ -162,10 +162,7 @@ const SingleBlog0 = ({ blog, errorCode }) => {
 
 
                         <section className={styles.mypost2} >
-                            <br /> <br /> <br />
-                            <section className={styles.comments}> {showComments()} </section>  <br />
-
-                            <section className={styles.item0000}> <br /> <Search /> <br /> </section>
+                            <br /> <br />
 
                             <section className={styles.grid}>{showRelatedBlog()}</section>
                             <br /> <br /><br /><br />
