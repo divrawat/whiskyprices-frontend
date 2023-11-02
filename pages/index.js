@@ -12,7 +12,7 @@ const Index = ({ blogs }) => {
             <article key={i} className={styles.box}>
                 <Card blog={blog} />
             </article>
-        )).slice(0, 9); ;
+        ));
     }
 
 
@@ -68,21 +68,8 @@ const Index = ({ blogs }) => {
 export async function getStaticProps() {
     try {
       const data = await listBlogsWithCategoriesAndTags();
-      
-      return {
-        props: {
-          blogs: data.blogs,
-        },
-      };
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      
-      return {
-        props: {
-          blogs: [],
-        },
-      };
-    }
+      return {props: {blogs: data.blogs,}, };
+    } catch (error) {console.error("Error fetching data:", error);return {props: {blogs: [],}, };  }
   }
 
 export default Index;
