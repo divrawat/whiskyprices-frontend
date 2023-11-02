@@ -4,8 +4,7 @@ const Layout = dynamic(() => import('@/components/Layout'), {ssr: false});
 import { singleCategory } from '../../actions/category';
 import { DOMAIN, APP_NAME} from '../../config';
 import Card from '../../components/blog/Card';
-import styles from "../../styles/blogs.module.css"
-import Search from '@/components/blog/Search';
+import styles from "../../styles/blogs.module.css";
 import { useState } from 'react';
 
 const Category = ({ category, blogs, query, errorCode }) => {
@@ -16,7 +15,6 @@ const Category = ({ category, blogs, query, errorCode }) => {
                 <div style={{ background: "black" }}>
                     <br /><br /><br />
                     <div className={styles.page404}>404 Error! Category Not Found</div>
-                    <section className={styles.item0000}> <br /> <Search /> <br /><br /><br /></section>
                 </div>
             </Layout>
         );

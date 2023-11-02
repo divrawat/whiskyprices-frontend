@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import { isAuth } from '../actions/auth'
+import { isAuth } from '../actions/auth';
 import parse from 'html-react-parser';
 import Link from 'next/link';
 const Layout = dynamic(() => import('@/components/Layout'), { ssr: false });
@@ -72,12 +72,6 @@ const SingleBlog0 = ({ blog, errorCode }) => {
             </Link>
         ));
 
-    const showBlogTags = blog =>
-        blog.tags.map((t, i) => (
-            <Link key={i} href={`/tags/${t.slug}`} className={styles.blogtag}>
-                {t.name}
-            </Link>
-        ));
 
 
     const showRelatedBlog = () => {
@@ -152,7 +146,6 @@ const SingleBlog0 = ({ blog, errorCode }) => {
                                 <div style={{ textAlign: "center" }}>
                                     <br /><br />
                                     {showBlogCategories(blog)}
-                                    {showBlogTags(blog)}
 
                                 </div>
                             </section>
