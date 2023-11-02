@@ -61,12 +61,7 @@ const SingleBlog0 = ({ blog, errorCode }) => {
                                 <header>
                                     <h1 >{blog.title}</h1>
                                     <section className={styles.dateauth}>
-                                        {formattedDate} &nbsp; by &nbsp;
-                                        {blog.postedBy && blog.postedBy.name && blog.postedBy.username ? (
-                                            <Link href={`/profile/${blog.postedBy.username}`} className={styles.author}>
-                                                {blog.postedBy.name}
-                                            </Link>
-                                        ) : (<span>User</span>)}
+                                        {formattedDate} &nbsp; by &nbsp; Divyanshu Rawat
                                     </section>
                                 </header>
                                 <br />                               
