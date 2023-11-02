@@ -6,8 +6,6 @@ import styles from "../styles/NavbarFooter.module.css"
 
 
 const Navbar = () => {
-
-
   function disablenavbar2() {
     let x = document.getElementById("disable")
     if (x.style.display === "block") {
@@ -20,10 +18,6 @@ const Navbar = () => {
     document.getElementById("disable").style.display = "none";
   }
   
-
-
-
-
   return (
     <>
       <nav className={styles.nav}>
