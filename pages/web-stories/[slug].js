@@ -30,8 +30,8 @@ const Stories = ({ story, errorCode }) => {
         "name": `${APP_NAME}`,
         "logo": {
           "@type": "ImageObject",
-          "@id": "https://www.liquorprices.in/#logo",
-          "url": "https://www.liquorprices.in/wp-content/uploads/2023/06/cropped-Logo-1.png",
+          "@id": "https://whiskyprices.ninja/#logo",
+          "url": "https://whiskyprices.ninja/wp-content/uploads/2023/06/cropped-Logo-1.png",
           "width": "96",
           "height": "96"
         }
@@ -73,9 +73,9 @@ const Stories = ({ story, errorCode }) => {
       },
       {
         "@type": "Person",
-        "@id": "https://www.liquorprices.in/author/divrawat2001/",
+        "@id": "https://whiskyprices.ninja/author/divrawat2001/",
         "name": "Divyansh Rawal",
-        "url": "https://www.liquorprices.in/author/divrawat2001/",
+        "url": "https://whiskyprices.ninja/author/divrawat2001/",
         "image": {
           "@type": "ImageObject",
           "@id": "https://secure.gravatar.com/avatar/25963693bf3ce6efc77eb7ed7d5f4228?s=96&amp;d=mm&amp;r=g",
@@ -93,7 +93,7 @@ const Stories = ({ story, errorCode }) => {
         "datePublished": `${story.date}`,
         "dateModified": `${story.date}`,
         "author": {
-          "@id": "https://www.liquorprices.in/author/divrawat2001/",
+          "@id": "https://whiskyprices.ninja/author/divrawat2001/",
           "name": "Divyansh Rawal"
         },
         "publisher": {
@@ -141,13 +141,13 @@ const Stories = ({ story, errorCode }) => {
       <link rel="amphtml" href={`${DOMAIN}/web-stories/${story.slug}`} />
       <meta property="article:published_time" content={`${story.date}`} />
       <meta property="article:modified_time" content={`${story.date}`} />
-      <link rel="icon" href="https://www.liquorprices.in/wp-content/uploads/2023/08/cropped-logologo-32x32.png" sizes="32x32" />
-      <link rel="icon" href="https://www.liquorprices.in/wp-content/uploads/2023/08/cropped-logologo-192x192.png" sizes="192x192" />
+      <link rel="icon" href="https://whiskyprices.ninja/wp-content/uploads/2023/08/cropped-logologo-32x32.png" sizes="32x32" />
+      <link rel="icon" href="https://whiskyprices.ninja/wp-content/uploads/2023/08/cropped-logologo-192x192.png" sizes="192x192" />
       <link rel={`${MY_API}`} href={`${API}`} />
       <link rel="alternate" type="application/json" href={`${API}/webstories/${story.slug}`} />
-      <link rel="apple-touch-icon" href="https://www.liquorprices.in/wp-content/uploads/2023/08/cropped-logologo-180x180.png" />
-      <link rel="alternate" type="application/rss+xml" title={`${APP_NAME} - Feed`} href="https://www.liquorprices.in/feed/" />
-      <link rel="alternate" type="application/rss+xml" title={`${APP_NAME} » Stories Feed`} href="https://www.liquorprices.in/web-stories/feed/" />
+      <link rel="apple-touch-icon" href="https://whiskyprices.ninja/wp-content/uploads/2023/08/cropped-logologo-180x180.png" />
+      <link rel="alternate" type="application/rss+xml" title={`${APP_NAME} - Feed`} href="https://whiskyprices.ninja/feed/" />
+      <link rel="alternate" type="application/rss+xml" title={`${APP_NAME} » Stories Feed`} href="https://whiskyprices.ninja/web-stories/feed/" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     </Head>
   );
@@ -162,9 +162,9 @@ const Stories = ({ story, errorCode }) => {
       <Script src="https://cdn.ampproject.org/v0.js" async />
       <Script custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js" async />
       <Script custom-element="amp-story-auto-ads" src="https://cdn.ampproject.org/v0/amp-story-auto-ads-0.1.js" async />
-      <Script custom-element="amp-story-auto-analytics" src="https://cdn.ampproject.org/v0/amp-story-auto-analytics-0.1.js" async/>
+      <Script custom-element="amp-story-auto-analytics" src="https://cdn.ampproject.org/v0/amp-story-auto-analytics-0.1.js" async />
 
-      <amp-story standalone="" title={`${story.title}`} publisher={`${APP_NAME}`} publisher-logo-src="http://www.liquorprices.in/wp-content/uploads/2023/09/logologo.png" poster-portrait-src={`${story.coverphoto}`} >
+      <amp-story standalone="" title={`${story.title}`} publisher={`${APP_NAME}`} publisher-logo-src="http://whiskyprices.ninja/wp-content/uploads/2023/09/logologo.png" poster-portrait-src={`${story.coverphoto}`} >
 
         <amp-story-page id="cover" className="myclass" auto-advance-after="4s">
           <amp-story-grid-layer template="vertical">
@@ -179,7 +179,7 @@ const Stories = ({ story, errorCode }) => {
         </amp-story-page>
 
         {story.slides.map((slide, i) => (
-         <React.Fragment key={i}>
+          <React.Fragment key={i}>
             <amp-story-page id={`page${i}`} key={i} auto-advance-after="5s">
               <amp-story-grid-layer template="vertical">
                 <amp-img src={`${slide.image}`} layout="responsive" animate-in="fade-in" width="720" height="1280" />
@@ -195,7 +195,7 @@ const Stories = ({ story, errorCode }) => {
 
 
             {i === 2 && slide.ads ? (
-              <amp-story-page  key="00"  ad="" id="i-amphtml-ad-page-00" class="i-amphtml-element i-amphtml-layout-container i-amphtml-built i-amphtml-layout i-amphtml-story-page-loaded" i-amphtml-layout="container" role="region" xdomain-ad="" i-amphtml-return-to="page2" i-amphtml-advance-to="page3" i-amphtml-visited="" active="">
+              <amp-story-page key="00" ad="" id="i-amphtml-ad-page-00" class="i-amphtml-element i-amphtml-layout-container i-amphtml-built i-amphtml-layout i-amphtml-story-page-loaded" i-amphtml-layout="container" role="region" xdomain-ad="" i-amphtml-return-to="page2" i-amphtml-advance-to="page3" i-amphtml-visited="" active="">
                 <amp-story-grid-layer template="fill" class="i-amphtml-element i-amphtml-layout-container i-amphtml-story-layer i-amphtml-built i-amphtml-layout" i-amphtml-layout="container">
                   <amp-ad type="adsense" data-ad-client="ca-pub-1721485376950080" data-ad-slot="6021303939" class="i-amphtml-story-ad i-amphtml-element i-amphtml-layout-fill i-amphtml-layout-size-defined i-amphtml-built i-amphtml-layout" layout="fill" amp-story="" i-amphtml-layout="fill" data-amp-slot-index="1" data-a4a-upgrade-type="amp-ad-network-adsense-impl" ></amp-ad>
                   <amp-story-grid-layer template="fill" class="i-amphtml-element i-amphtml-layout-container i-amphtml-story-layer i-amphtml-built i-amphtml-layout" i-amphtml-layout="container"><div class="i-amphtml-glass-pane"></div></amp-story-grid-layer>
@@ -236,7 +236,8 @@ const Stories = ({ story, errorCode }) => {
 
 
 
-<amp-story-auto-analytics gtag-id="G-D18GTPG2SJ" class="i-amphtml-layout-container" i-amphtml-layout="container"></amp-story-auto-analytics>
+        <amp-story-auto-analytics gtag-id="G-D18GTPG2SJ" class="i-amphtml-layout-container" i-amphtml-layout="container"></amp-story-auto-analytics>
+        
         {/* <amp-story-auto-ads>
           <script type="application/json"
             dangerouslySetInnerHTML={{
@@ -250,7 +251,11 @@ const Stories = ({ story, errorCode }) => {
             }} />
         </amp-story-auto-ads> */}
 
+
+
       </amp-story>
+
+
     </>
   );
 };
@@ -260,25 +265,25 @@ const Stories = ({ story, errorCode }) => {
 export async function getStaticPaths() {
   const slugs = await allslugs();
 
-const excludedSlugs = ['/admin/edit-blogs'];
-const filteredSlugs = slugs.filter((slugObject) => !excludedSlugs.includes(slugObject.slug));
-const paths = filteredSlugs.map((slugObject) => ({ params: { slug: slugObject.slug } }));
+  const excludedSlugs = ['/admin/edit-blogs'];
+  const filteredSlugs = slugs.filter((slugObject) => !excludedSlugs.includes(slugObject.slug));
+  const paths = filteredSlugs.map((slugObject) => ({ params: { slug: slugObject.slug } }));
 
-return { paths, fallback: "blocking" };
+  return { paths, fallback: "blocking" };
 }
 
 
 export async function getStaticProps({ params, res }) {
   try {
-      const data = await singleStory(params.slug);
-      if (!data) {
-          res.statusCode = 404;
-          return { props: { errorCode: 404 } };
-      }
-      return { props: { story: data } };
+    const data = await singleStory(params.slug);
+    if (!data) {
+      res.statusCode = 404;
+      return { props: { errorCode: 404 } };
+    }
+    return { props: { story: data } };
   } catch (error) {
-      console.error(error);
-      return { props: { errorCode: 500 } };
+    console.error(error);
+    return { props: { errorCode: 500 } };
   }
 }
 
