@@ -2,7 +2,6 @@ import styles from "../styles/adminDashBoard.module.css"
 import { signout, isAuth } from '../actions/auth';
 import Router from 'next/router';
 import Image from "next/image";
-import Link from "next/link";
 import dynamic from "next/dynamic";
 
 
@@ -42,15 +41,14 @@ const AdminDashLayout = ({ children }) => {
             <div className={styles.dashbar} id="mydashbar">
               <ul className={styles.dashbarul}>
                 <a className={styles.Link} href="/"><li className={styles.list}><Image className={styles.Myicon} src="/HomeIcon.png" width={22} height={22} alt="image"/>Home</li></a>
-                <Link target="_blank" className={styles.Link} href="/admin/blog"><li className={styles.list}><Image className={styles.Myicon} src="/Plus.png" width={20} height={20} alt="image"/>Add Post</li></Link>
-                <Link target="_blank" className={styles.Link} href="/admin/web-story"><li className={styles.list}><Image className={styles.Myicon} src="/Plus.png" width={20} height={20} alt="image"/>Add Story</li></Link>
-                <Link className={styles.Link} href="/admin/category"><li className={styles.list}><Image className={styles.Myicon} src="/Categories.png" width={20} height={20} alt="image" />Categories</li></Link>
-                <Link className={styles.Link} href="/admin/tag"><li className={styles.list}><Image className={styles.Myicon} src="/Tag.png" width={20} height={20} alt="image"/>Tags</li></Link>
+                <a target="_blank" className={styles.Link} href="/admin/blog"><li className={styles.list}><Image className={styles.Myicon} src="/Plus.png" width={20} height={20} alt="image"/>Add Post</li></a>
+                <a target="_blank" className={styles.Link} href="/admin/web-story"><li className={styles.list}><Image className={styles.Myicon} src="/Plus.png" width={20} height={20} alt="image"/>Add Story</li></a>
+                <a className={styles.Link} href="/admin/category"><li className={styles.list}><Image className={styles.Myicon} src="/Categories.png" width={20} height={20} alt="image" />Categories</li></a>
                 <a className={styles.Link} href="/admin/edit-blogs"><li className={styles.list}><Image className={styles.Myicon} src="/create.png" width={23} height={22} alt="image"/>Edit Blogs</li></a>
                 <a className={styles.Link} href="/admin/edit-story"><li className={styles.list}><Image className={styles.Myicon} src="/create.png" width={23} height={22} alt="image"/>Edit Stories</li></a>
-                <Link target="_blank" className={styles.Link} href="/blogs"><li className={styles.list}><Image className={styles.Myicon} src="/books.png" width={24} height={24} alt="image"/>Blogs</li></Link>
-                <Link target="_blank" className={styles.Link} href="/web-stories"><li className={styles.list}><Image className={styles.Myicon} src="/books.png" width={24} height={24} alt="image"/>Stories</li></Link>
-                <Link className={styles.Link} href="/admin/images"><li className={styles.list}><Image className={styles.Myicon} src="/books.png" width={24} height={24} alt="image"/>Images</li></Link>
+                <a target="_blank" className={styles.Link} href="/blogs"><li className={styles.list}><Image className={styles.Myicon} src="/books.png" width={24} height={24} alt="image"/>Blogs</li></a>
+                <a target="_blank" className={styles.Link} href="/web-stories"><li className={styles.list}><Image className={styles.Myicon} src="/books.png" width={24} height={24} alt="image"/>Stories</li></a>
+                <a className={styles.Link} href="/admin/images"><li className={styles.list}><Image className={styles.Myicon} src="/books.png" width={24} height={24} alt="image"/>Images</li></a>
               </ul>
             </div>
 

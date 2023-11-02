@@ -6,22 +6,11 @@ import Link from 'next/link';
 const Layout = dynamic(() => import('@/components/Layout'), { ssr: false });
 import { useState, useEffect } from 'react';
 import { singleBlog, listRelated, getAllBlogSlugs } from '../actions/blog';
-import { API, DOMAIN, APP_NAME } from "../config"
+import { API, DOMAIN, APP_NAME } from "../config";
 const SmallCard = dynamic(() => import('../components/blog/SmallCard'), { ssr: false });
-import styles from "../styles/blogposts.module.css"
+import styles from "../styles/blogposts.module.css";
 const Search = dynamic(() => import('@/components/blog/Search'), { ssr: false });
 import { format } from 'date-fns';
-const DisqusThread = dynamic(() => import('../components/DisqusThread'), { ssr: false });
-
-import {
-    FacebookShareButton, FacebookIcon, WhatsappShareButton, WhatsappIcon,
-    TelegramShareButton, TelegramIcon,
-    RedditShareButton, RedditIcon, TwitterShareButton, TwitterIcon,
-} from 'next-share'
-
-
-
-
 
 const SingleBlog0 = ({ blog, errorCode }) => {
 
@@ -102,34 +91,6 @@ const SingleBlog0 = ({ blog, errorCode }) => {
 
         )))
     };
-
-
-    const showComments = () => {
-        return (
-            <DisqusThread id={blog._id} title={blog.title} path={`/blog/${blog.slug}`} />
-
-        );
-    };
-
-    const Posttitle = `${blog.title}`;
-    const shareUrl = `${DOMAIN}/${blog.slug}`;
-    // const encodedUrl = encodeURIComponent(shareUrl);
-
-
-
-    const socialmedia = () => {
-        return (
-
-            <div style={{ marginTop: '15px' }} className="Footerlogos">
-                <FacebookShareButton url={shareUrl} quote={Posttitle}> <FacebookIcon size={35} round /> </FacebookShareButton>
-                <WhatsappShareButton url={shareUrl} title={Posttitle} style={{ padding: "5px" }}><WhatsappIcon size={35} round /></WhatsappShareButton>
-                <TelegramShareButton url={shareUrl} title={Posttitle} style={{ padding: "5px" }}><TelegramIcon size={35} round /></TelegramShareButton>
-                {/* <LinkedinShareButton url={shareUrl} title={Posttitle} style={{ padding: "5px" }}><LinkedinIcon size={35} round /></LinkedinShareButton> */}
-                <RedditShareButton url={shareUrl} title={Posttitle} style={{ padding: "5px" }}><RedditIcon size={35} round /></RedditShareButton>
-                <TwitterShareButton url={shareUrl} title={Posttitle} style={{ padding: "5px" }}><TwitterIcon size={35} round /></TwitterShareButton>
-            </div>
-        )
-    }
 
 
     // Date Conversion
