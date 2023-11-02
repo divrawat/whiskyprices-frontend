@@ -1,4 +1,4 @@
-export const API = "https://backend-whiskyprices.ninja/api";
+export const API = "https://whiskyprices-backend.vercel.app/api";
 export const DOMAIN = "https://stories.whiskyprices.ninja";
 export const MY_API="https://backend-coding4u.vercel.app";
 
