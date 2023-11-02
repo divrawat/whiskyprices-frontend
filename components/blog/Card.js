@@ -15,17 +15,6 @@ const Card = ({ blog }) => {
             </div>
         ))
 
-
-    const showBlogTags = blog =>
-        blog.tags.map((t, i) => (
-
-            <div className={styles.tagcatdisplay} key={i}>
-                <Link href={`/tags/${t.slug}`} className={styles.category}>
-                    {t.name}
-                </Link>
-            </div>
-        ));
-
         
     // Date Conversion
     const date = new Date(blog.date);
@@ -53,8 +42,6 @@ const Card = ({ blog }) => {
 
             <div className={styles.givepadding}>
                 {showBlogCategories(blog)}
-                {showBlogTags(blog)}
-
                 <section>
                     <div className={styles.para}>{(blog.excerpt)}</div>
                    

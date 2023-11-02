@@ -5,8 +5,6 @@ import { format } from 'date-fns';
 
 const SmallCard = ({ blog }) => {
  
-
-
     // Date Conversion
     const date = new Date(blog.date);
     const formattedDate = format(date, 'dd MMM, yyyy');
@@ -24,8 +22,6 @@ const SmallCard = ({ blog }) => {
                  {blog.title} 
             </section>
             </a>
-
-            {/* <div className={styles.dateauth}>{formattedDate} by  <Link href={`/profile/${blog.postedBy.username}`} className={styles.author}> {blog.postedBy.name}</Link>   </div> */}
 
             <section className={styles.dateauth}>
                 {formattedDate} &nbsp; by &nbsp;

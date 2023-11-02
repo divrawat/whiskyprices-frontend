@@ -9,7 +9,6 @@ import { singleBlog, listRelated, getAllBlogSlugs } from '../actions/blog';
 import { API, DOMAIN, APP_NAME } from "../config";
 const SmallCard = dynamic(() => import('../components/blog/SmallCard'), { ssr: false });
 import styles from "../styles/blogposts.module.css";
-const Search = dynamic(() => import('@/components/blog/Search'), { ssr: false });
 import { format } from 'date-fns';
 
 const SingleBlog0 = ({ blog, errorCode }) => {
@@ -20,7 +19,6 @@ const SingleBlog0 = ({ blog, errorCode }) => {
                 <div style={{ background: "black" }}>
                     <br /><br /><br />
                     <div className={styles.page404}>404 Error! Page Not Found</div>
-                    <section className={styles.item0000}> <br /> <Search /> <br /><br /><br /></section>
                 </div>
             </Layout>
         );
@@ -132,7 +130,7 @@ const SingleBlog0 = ({ blog, errorCode }) => {
                                     </section>
                                 </header>
 
-                                {socialmedia()}<br />
+                                <br />
 
                                 
                                     <section className={styles.imageContainer}>
