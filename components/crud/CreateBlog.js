@@ -170,7 +170,6 @@ const CreateBlog = ({ router }) => {
 
         formData.set(name, value);
         console.log(value);
-        // setValues({...values,[name]: value,formData: formData,error: '',});
         setValues({ ...values, [name]: value, formData, error: '' });
 
     };
@@ -181,7 +180,7 @@ const CreateBlog = ({ router }) => {
             <form onSubmit={publishBlog} style={{background:"var(--adminBack-color)"}}>
 
                 <div>
-                    <input placeholder='Title Goes Here' type="text" value={title} className={styles0.inputs} onChange={handleChange('title')} autoFocus={true} />
+                    <input placeholder='Title Goes Here' required type="text" value={title} className={styles0.inputs} onChange={handleChange('title')} autoFocus={true} />
                 </div>
 
 
@@ -240,20 +239,20 @@ const CreateBlog = ({ router }) => {
                             <div style={{ marginBottom: "7px" }}>
 
                             </div>
-                            <DatePicker id='date' autoComplete="off" onChange={handleDateChange}
+                            <DatePicker id='date' autoComplete="off" onChange={handleDateChange} required
                                 selected={values.date} minDate={new Date()} showYearDropdown dateFormat="dd MMM, yyyy"
 
                             />
 
 
                             <div className={styles0.fieldtext}> Title</div>
-                            <input placeholder='Meta Title' type="text" value={mtitle} className={styles0.inputs2} onChange={handleChange('mtitle')} />
+                            <input placeholder='Meta Title' required type="text" value={mtitle} className={styles0.inputs2} onChange={handleChange('mtitle')} />
 
                             <div className={styles0.fieldtext}> Meta Description</div>
                             <textarea style={{ fontSize: "13.5px", padding: "5px", marginTop: "10px", marginBottom: "15px" }} placeholder='Meta Description' value={mdesc} onChange={handleChange('mdesc')} rows="12" cols="26"></textarea>
 
                             <div className={styles0.fieldtext}>Slug or Url</div>
-                            <input placeholder='slug or url' type="text" value={slug} className={styles0.inputs2} onChange={handleChange('slug')} />
+                            <input placeholder='slug or url' required type="text" value={slug} className={styles0.inputs2} onChange={handleChange('slug')} />
                         </div>
 
 
@@ -261,7 +260,7 @@ const CreateBlog = ({ router }) => {
                         <div className={styles0.fimage}>
                             <div className={styles0.mydiv}>
                                 <h3>Featured Image</h3>
-                                <input placeholder='Image Link' type="text" value={photo} className={styles0.inputs2} onChange={handleChange('photo')} />
+                                <input placeholder='Image Link' required type="text" value={photo} className={styles0.inputs2} onChange={handleChange('photo')} />
                             </div>
                         </div>
 

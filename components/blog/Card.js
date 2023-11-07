@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { API } from '../../config';
 import styles from "../../styles/blogs.module.css"
-import { format } from 'date-fns';
 
 const Card = ({ blog }) => {
 
@@ -15,11 +14,6 @@ const Card = ({ blog }) => {
             </div>
         ))
 
-        
-    // Date Conversion
-    const date = new Date(blog.date);
-    const formattedDate = format(date, 'dd MMM, yyyy');
-
     return (
 
         <>
@@ -30,7 +24,7 @@ const Card = ({ blog }) => {
             <header><Link className={styles.headcolor} href={`/${blog.slug}`}><h2 className={styles.blogtitle}>{blog.title}</h2></Link></header>
 
                 <section className={styles.dateauthor}>
-                {formattedDate} &nbsp; by &nbsp;
+                {blog.date} &nbsp; by &nbsp;
                 {blog.postedBy && blog.postedBy.name && blog.postedBy.username ? (
                     <Link href={`/profile/${blog.postedBy.username}`} className={styles.author}>
                         {blog.postedBy.name}

@@ -99,9 +99,8 @@ const BlogUpdate = ({ router }) => {
                     }
 
                 } else {
-                    const isoDateString = data.date;
-                    const dateObject = parseISO(isoDateString);
-                    setValues({ ...values, title: data.title, mtitle: data.mtitle, photo:data.photo, date: dateObject, slug: data.slug, mdesc: data.mdesc });
+                    const dateFromString = new Date(Date.parse(data.date));
+                    setValues({ ...values, title: data.title, mtitle: data.mtitle, photo:data.photo, date: dateFromString, slug: data.slug, mdesc: data.mdesc });
                     setBody(data.body)
                     setCategoriesArray(data.categories);
                 }
@@ -214,7 +213,7 @@ const BlogUpdate = ({ router }) => {
             <form onSubmit={editBlog} style={{ background: "var(--adminBack-color)" }}>
 
                 <div >
-                    <input type="text" value={title} className={styles0.inputs} onChange={handleChange('title')} autoFocus={true} />
+                    <input type="text" value={title} required className={styles0.inputs} onChange={handleChange('title')} autoFocus={true} />
                 </div>
 
 
@@ -278,23 +277,22 @@ const BlogUpdate = ({ router }) => {
                             <DatePicker id='date' autoComplete="off" showYearDropdown dateFormat="dd MMM, yyyy"
                                 onChange={handleDateChange} selected={values.date} value={date} />
 
-
                             <div className={styles0.aligncenter}>
                                 <div className={styles0.fieldtext}> Title</div>
-                                <input type="text" value={mtitle} className={styles0.inputs2} onChange={handleChange('mtitle')} />
+                                <input type="text" value={mtitle} required className={styles0.inputs2} onChange={handleChange('mtitle')} />
 
                                 <div className={styles0.fieldtext}> Meta Description</div>
                                 <textarea style={{ fontSize: "13.5px", padding: "5px", marginTop: "10px", marginBottom: "20px" }} value={mdesc} onChange={handleChange('mdesc')} rows="12" cols="26"></textarea>
 
                                 <div className={styles0.fieldtext}>Slug or Url</div>
-                                <input type="text" value={slug} className={styles0.inputs2} onChange={handleChange('slug')} />
+                                <input type="text" required value={slug} className={styles0.inputs2} onChange={handleChange('slug')} />
                             </div>
                         </div>
 
                         <div className={styles0.fimage}>
                             <div className={styles0.mydiv}>
                                 <h3>Featured Image</h3>
-                                <input type="text" value={photo} className={styles0.inputs2} onChange={handleChange('photo')} />
+                                <input type="text" required value={photo} className={styles0.inputs2} onChange={handleChange('photo')} />
                             </div>
                         </div>
 

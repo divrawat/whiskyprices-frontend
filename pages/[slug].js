@@ -1,9 +1,6 @@
 import Head from 'next/head';
-import dynamic from 'next/dynamic';
-import { isAuth } from '../actions/auth';
-import parse from 'html-react-parser';
 import Link from 'next/link';
-const Layout = dynamic(() => import('@/components/Layout'), { ssr: false });
+import Layout from '@/components/Layout';
 import { singleBlog, getAllBlogSlugs } from '../actions/blog';
 import { API, DOMAIN, APP_NAME } from "../config";
 import styles from "../styles/blogposts.module.css";
@@ -55,7 +52,7 @@ const SingleBlog0 = ({ blog, errorCode }) => {
                         <br />
                         <section className={styles.mypost}>
                             <section className={styles.topsection}>
-                                {isAuth() && isAuth().role === 1 && (<div className={styles.editbutton}><a href={`${DOMAIN}/admin/${blog.slug}`}>Edit</a></div>)}
+                                {/* {isAuth() && isAuth().role === 1 && (<div className={styles.editbutton}><a href={`${DOMAIN}/admin/${blog.slug}`}>Edit</a></div>)} */}
 
 
                                 <header>
@@ -73,7 +70,7 @@ const SingleBlog0 = ({ blog, errorCode }) => {
                                 <br /><br />
                             </section>
                             <section class="postcontent">
-                                {parse(blog.body)}
+                            <div dangerouslySetInnerHTML={{ __html: blog.body }} />
                                 <div style={{ textAlign: "center" }}>
                                     <br /><br />
                                     {showBlogCategories(blog)}
