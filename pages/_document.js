@@ -12,8 +12,7 @@ export default class MyDocument extends Document {
           <style amp-custom="" dangerouslySetInnerHTML={{
             __html: `
               amp-story-page {
-                 background-image: url("/back.webp");
-                
+                 background-image: url("/Back.webp");
               }
               amp-story-grid-layer{
                 margin: auto;
