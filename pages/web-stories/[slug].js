@@ -194,7 +194,7 @@ const Stories = ({ story, errorCode }) => {
             </amp-story-page>
 
 
-            {i === 2 && slide.ads ? (
+            {i === 2 && story.ads ? (
               <amp-story-page key="00" ad="" id="i-amphtml-ad-page-00" class="i-amphtml-element i-amphtml-layout-container i-amphtml-built i-amphtml-layout i-amphtml-story-page-loaded" i-amphtml-layout="container" role="region" xdomain-ad="" i-amphtml-return-to="page2" i-amphtml-advance-to="page3" i-amphtml-visited="" active="">
                 <amp-story-grid-layer template="fill" class="i-amphtml-element i-amphtml-layout-container i-amphtml-story-layer i-amphtml-built i-amphtml-layout" i-amphtml-layout="container">
                   <amp-ad type="adsense" data-ad-client="ca-pub-1721485376950080" data-ad-slot="6021303939" class="i-amphtml-story-ad i-amphtml-element i-amphtml-layout-fill i-amphtml-layout-size-defined i-amphtml-built i-amphtml-layout" layout="fill" amp-story="" i-amphtml-layout="fill" data-amp-slot-index="1" data-a4a-upgrade-type="amp-ad-network-adsense-impl" ></amp-ad>
@@ -205,7 +205,7 @@ const Stories = ({ story, errorCode }) => {
 
             ) : null}
 
-            {i === 5 && slide.ads ? (
+            {i === 5 && story.ads ? (
               <amp-story-page key="01" ad="" id="i-amphtml-ad-page-01" class="i-amphtml-element i-amphtml-layout-container i-amphtml-built i-amphtml-layout i-amphtml-story-page-loaded" i-amphtml-layout="container" role="region" xdomain-ad="" i-amphtml-return-to="page5" i-amphtml-advance-to="page6" i-amphtml-visited="" active="">
 
                 <amp-story-grid-layer template="fill" class="i-amphtml-element i-amphtml-layout-container i-amphtml-story-layer i-amphtml-built i-amphtml-layout" i-amphtml-layout="container">
@@ -237,7 +237,7 @@ const Stories = ({ story, errorCode }) => {
 
 
         <amp-story-auto-analytics gtag-id="G-D18GTPG2SJ" class="i-amphtml-layout-container" i-amphtml-layout="container"></amp-story-auto-analytics>
-        
+
         {/* <amp-story-auto-ads>
           <script type="application/json"
             dangerouslySetInnerHTML={{

@@ -90,7 +90,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head>
-          <script dangerouslySetInnerHTML={{
+          {/* <script dangerouslySetInnerHTML={{
             __html: `
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -98,15 +98,9 @@ export default class MyDocument extends Document {
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-54XZPTFN');
 `
-          }} />
+          }} /> */}
         </Head>
         <body>
-          <noscript dangerouslySetInnerHTML={{
-            __html: `
-            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54XZPTFN"
-             height="0" width="0" style="display:none;visibility:hidden"></iframe>
-`
-          }} />
 
           <Main />
           <NextScript />
