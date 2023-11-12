@@ -1,11 +1,11 @@
 import Head from 'next/head';
-import dynamic from 'next/dynamic';
-const Layout = dynamic(() => import('@/components/Layout'), {ssr: false});
+import Layout from '@/components/Layout';
 import { singleCategory } from '../../actions/category';
 import { DOMAIN, APP_NAME} from '../../config';
 import Card from '../../components/blog/Card';
-import styles from "../../styles/blogs.module.css";
+import styles from "../../styles/blogs.module.css"
 import { useState } from 'react';
+import { format } from 'date-fns';
 
 const Category = ({ category, blogs, query, errorCode }) => {
 
@@ -154,7 +154,7 @@ const Category = ({ category, blogs, query, errorCode }) => {
 
 
 
-
+/*
 export async function getServerSideProps({ query, res }) {
   try {
       const data = await singleCategory(query.slug);
@@ -162,12 +162,26 @@ export async function getServerSideProps({ query, res }) {
           res.statusCode = 404;
           return { props: { errorCode: 404 } };
       }
+
+
       return { props: { category: data.category, blogs: data.blogs, query } };
   } catch (error) {
       console.error(error);
       return { props: { errorCode: 500 } };
   }
 }
+*/
 
+export async function getServerSideProps({ query, res }) {
+  try {
+    const data = await singleCategory(query.slug);
+    if (data.error) {res.statusCode = 404;return { props: { errorCode: 404 } };}
+    const formattedBlogs = data.blogs.map(blog => ({...blog, formattedDate: format(new Date(blog.date), 'dd MMMM, yyyy')}));
+    return { props: { category: data.category, blogs: formattedBlogs, query } };
+  } catch (error) {
+    console.error(error);
+    return { props: { errorCode: 500 } };
+  }
+}
 
 export default Category;

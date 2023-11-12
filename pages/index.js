@@ -4,6 +4,7 @@ import { listBlogsWithCategoriesAndTags } from '../actions/blog';
 import Card from '../components/blog/Card';
 import Head from "next/head";
 import { APP_DESCRIPTION, DOMAIN, APP_NAME} from "../config"
+import { format } from 'date-fns';
 
 const Index = ({ blogs }) => {
 
@@ -68,8 +69,12 @@ const Index = ({ blogs }) => {
 export async function getStaticProps() {
     try {
       const data = await listBlogsWithCategoriesAndTags();
-      return {props: {blogs: data.blogs,}, };
-    } catch (error) {console.error("Error fetching data:", error);return {props: {blogs: [],}, };  }
+      const formattedBlogs = data.blogs.map(blog => ({...blog, formattedDate: format(new Date(blog.date), 'dd MMMM, yyyy')}));
+      return { props: { blogs: formattedBlogs } };
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      return { props: { blogs: [] } };
+    }
   }
 
 export default Index;

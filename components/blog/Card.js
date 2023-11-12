@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { API } from '../../config';
 import styles from "../../styles/blogs.module.css"
 
 const Card = ({ blog }) => {
@@ -13,7 +12,7 @@ const Card = ({ blog }) => {
                 </Link>
             </div>
         ))
-
+        const formattedDate = blog.formattedDate;
     return (
 
         <>
@@ -24,7 +23,7 @@ const Card = ({ blog }) => {
             <header><Link className={styles.headcolor} href={`/${blog.slug}`}><h2 className={styles.blogtitle}>{blog.title}</h2></Link></header>
 
                 <section className={styles.dateauthor}>
-                {blog.date} &nbsp; by &nbsp;
+                {formattedDate} &nbsp; by &nbsp;
                 {blog.postedBy && blog.postedBy.name && blog.postedBy.username ? (
                     <Link href={`/profile/${blog.postedBy.username}`} className={styles.author}>
                         {blog.postedBy.name}

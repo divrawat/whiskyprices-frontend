@@ -150,14 +150,10 @@ const Blogs = ({ blogs, router }) => {
 
 export async function getServerSideProps() {
   const data = await listBlogsWithCategoriesAndTags();
-  if (data.error) {
-      console.log(data.error);
-  } else {
-      return {
-          props: {
-              blogs: data.blogs,
-          }
-      };
+  if (data.error) {console.log(data.error);} 
+  else {
+    const formattedBlogs = data.blogs.map(blog => ({...blog, formattedDate: format(new Date(blog.date), 'dd MMMM, yyyy') }));
+   return { props: { blogs: formattedBlogs } };
   }
 }
 
