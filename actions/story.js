@@ -91,7 +91,7 @@ export const updateStory = async (story, token, slug) => {
 
     try {
         const response = await fetch(`${API}/webstoriesupdate/${slug}`, {
-            method: 'PATCH',
+            method: 'PUT',
             headers: {
                 Accept: 'application/json',
                 Authorization: `Bearer ${token}`
