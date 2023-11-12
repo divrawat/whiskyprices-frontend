@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { withRouter } from 'next/router';
-import dynamic from 'next/dynamic';
-const Layout = dynamic(() => import('@/components/Layout'), {ssr: false});
+import Layout from '@/components/Layout';
 import { listBlogsWithCategoriesAndTags } from '../../actions/blog';
 import Card from '../../components/blog/Card';
 import { DOMAIN, APP_NAME} from '../../config';

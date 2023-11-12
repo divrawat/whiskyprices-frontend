@@ -10,8 +10,6 @@ const Navbar = () => {
 
   useEffect(() => { setUser(isAuth()); }, []);
 
-
-
   function disablenavbar2() {
     let x = document.getElementById("disable")
     if (x.style.display === "block") { x.style.display = "none"; }

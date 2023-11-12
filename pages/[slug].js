@@ -8,7 +8,6 @@ import Layout from '@/components/Layout';
 import { format } from 'date-fns';
 import { isAuth } from "../actions/auth";
 
-
 const SingleBlog0 = ({ blog, errorCode}) => {
 
     if (errorCode) {
@@ -63,7 +62,6 @@ const SingleBlog0 = ({ blog, errorCode}) => {
         <>
             {head()}
             <Layout >
-            {/* <Navbar blog={blog} /> */}
                 <main>
                     <article className={styles.backgroundImg}>
                         <br />
